@@ -1,4 +1,4 @@
-package com.sample_template.springbootservice
+package com.example.service
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

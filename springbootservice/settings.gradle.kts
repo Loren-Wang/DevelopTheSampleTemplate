@@ -1,1 +1,1 @@
-rootProject.name = "springbootservice"
+rootProject.name = "service"
