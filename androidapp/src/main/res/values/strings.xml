@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">androidapp</string>
+    <string name="app_name">AndroidProTheSampleTemplate</string>
+    <string name="send_type_first">发送器1</string>
+    <string name="send_type_second">发送器2</string>
+    <string name="send_params">初始数据：</string>
+    <string name="send_start">开始发送...</string>
+    <string name="send_result">接收到数据：</string>
 </resources>
