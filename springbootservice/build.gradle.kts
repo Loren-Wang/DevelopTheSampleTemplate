@@ -13,6 +13,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
+    maven{setUrl("https://dl.bintray.com/lorenwang/maven")}
 }
 
 dependencies {
@@ -23,6 +24,29 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+
+    //注解使用
+    implementation("org.springframework.boot:spring-boot-starter-data-rest")
+
+
+    // JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtime("mysql:mysql-connector-java")
+
+    //swagger注释
+    implementation("io.springfox:springfox-swagger2:2.6.0")
+    implementation("io.springfox:springfox-swagger-ui:2.6.0")
+    //java工具库
+    implementation("com.github.lorenwang:JavaCustomToolsFromLorenWang:1.0.44")
+    //java数据格式化库
+    implementation("com.github.lorenwang:JavaDataParseFromLorenWang:1.0.11")
+    implementation("com.google.code.gson:gson:2.8.5")
+
+    //日志打印框架
+    implementation("org.slf4j:slf4j-api:1.7.7")
+    implementation("ch.qos.logback:logback-core:1.1.3")
+    implementation("ch.qos.logback:logback-access:1.1.3")
+    implementation("ch.qos.logback:logback-classic:1.1.3")
 }
 
 tasks.withType<Test> {
