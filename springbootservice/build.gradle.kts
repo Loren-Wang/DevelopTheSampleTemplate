@@ -37,9 +37,9 @@ dependencies {
     implementation("io.springfox:springfox-swagger2:2.6.0")
     implementation("io.springfox:springfox-swagger-ui:2.6.0")
     //java工具库
-    implementation("com.github.lorenwang:JavaCustomToolsFromLorenWang:1.0.44")
+    implementation("com.github.loren-wang:JavaCustomToolsFromLorenWang:1.0.44")
     //java数据格式化库
-    implementation("com.github.lorenwang:JavaDataParseFromLorenWang:1.0.11")
+    implementation("com.github.loren-wang:JavaDataParseFromLorenWang:1.0.11")
     implementation("com.google.code.gson:gson:2.8.5")
 
     //日志打印框架

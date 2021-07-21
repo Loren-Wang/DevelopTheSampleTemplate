@@ -1,14 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
-
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.example.androidapp"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -16,38 +14,109 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        dataBinding true
+    }
+
     buildTypes {
+        debug {
+            //编译类型
+            buildConfigField("Integer", "APP_COMPILE_TYPE", "0")
+            //基础API地址
+            buildConfigField("String", "API_BASE", "\"http://127.0.0.1:1234\"")
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        appTest {
+            //编译类型
+            buildConfigField("Integer", "APP_COMPILE_TYPE", "1")
+            //基础API地址
+            buildConfigField("String", "API_BASE", "\"http://127.0.0.1:1234\"")
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
-            minifyEnabled false
+            //编译类型
+            buildConfigField("Integer", "APP_COMPILE_TYPE", "2")
+            //基础API地址
+            buildConfigField("String", "API_BASE", "\"http://127.0.0.1:1234\"")
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    //自定义工具类
-    implementation 'com.github.lorenwang:AndroidCustomToolsFromLorenWang:1.0.77'
-    //自定义控件库
-    implementation 'com.github.lorenwang:AndroidCustomViewsFromLorenWang:1.0.60'
-    //自定义动画库
-    implementation 'com.github.lorenwang:AndroidAnimFromLorenWang:1.0.0'
-    //自定义网络请求库
-    implementation 'LorenWangCustomTools:AndroidNetOptionsFromLorenWang:1.0.0'
-    //安卓数据格式化库
-    implementation 'com.github.lorenwang:AndroidDataParseFromLorenWang:1.0.0'
-    //java工具类库
-    implementation 'com.github.lorenwang:JavaCustomToolsFromLorenWang:1.0.45'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     //kotlin引入
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    //基础框架库
+    implementation 'com.github.loren-wang:AndroidCommonBaseFrameLibraryFromLorenWang:3.2.4'
+    //java工具类库
+    implementation 'com.github.loren-wang:JavaCustomToolsFromLorenWang:2.2.9'
+    //kotlin工具类
+    implementation 'com.github.loren-wang:KotlinCustomToolsFromLorenWang:1.3.6'
+    //扫描库
+    implementation 'com.github.loren-wang:AndroidGraphicCodeScanFromLorenWang:3.0.3'
+    //接口请求使用
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    //viewpager2
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    //fresco图片加载
+    implementation 'com.facebook.fresco:fresco:2.0.0'
+    implementation 'com.facebook.fresco:animated-gif:2.0.0'
+    //刷新库
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.3'
+    //列表数据加载-经典刷新头
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.3'
+    //列表数据加载-雷达刷新头
+    implementation 'com.scwang.smart:refresh-header-radar:2.0.3'
+    //列表数据加载-虚拟刷新头
+    implementation 'com.scwang.smart:refresh-header-falsify:2.0.3'
+    //列表数据加载-谷歌刷新头
+    implementation 'com.scwang.smart:refresh-header-material:2.0.3'
+    //列表数据加载-二级刷新头
+    implementation 'com.scwang.smart:refresh-header-two-level:2.0.3'
+    //列表数据加载-球脉冲加载
+    implementation 'com.scwang.smart:refresh-footer-ball:2.0.3'
+    //列表数据加载-经典加载
+    implementation 'com.scwang.smart:refresh-footer-classics:2.0.3'
+    //图片选择框架
+    implementation 'io.github.lucksiege:pictureselector:v2.7.3-rc03'
+    //自定义工具类
+    implementation 'com.github.loren-wang:AndroidCustomToolsFromLorenWang:3.2.0'
+    //自定义控件库
+    implementation 'com.github.loren-wang:AndroidCustomViewsFromLorenWang:3.2.9'
+    //自定义动画库
+    implementation 'com.github.loren-wang:AndroidAnimFromLorenWang:2.0.1'
+    //安卓数据格式化库
+    implementation 'com.github.loren-wang:JavaDataParseFromLorenWang:2.0.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    //java网络工具库
+    implementation 'com.github.loren-wang:JavaNetworkFromLorenWang:1.0.5'
+    //java工具类库
+    implementation 'com.github.loren-wang:JavaCustomToolsFromLorenWang:2.2.9'
+
+    //网络相关
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
 }
